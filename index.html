@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f4f4f4; }
+    .comic-strip { display: flex; justify-content: center; gap: 10px; margin: 20px auto; }
+    .comic-strip img { width: 300px; height: 300px; border: 2px solid #000; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
 
+  <div class="comic-strip">
+    <img id="panel1" src="" alt="Setup">
+    <img id="panel2" src="" alt="Filler">
+    <img id="panel3" src="" alt="Punchline">
+  </div>
+  <button onclick="generateComic()">Randomize Comic</button>
+
+  <script>
+    // Update these numbers to match how many images you have in each folder
+    const totalSetups = 20;
+    const totalFillers = 20;
+    const totalPunchlines = 20;
+
+    function getRandomNum(max) {
+      return Math.floor(Math.random() * max) + 1;
+    }
+
+    function generateComic() {
+      document.getElementById('panel1').src = `setups/setup${getRandomNum(totalSetups)}.png`;
+      document.getElementById('panel2').src = `fillers/filler${getRandomNum(totalFillers)}.png`;
+      document.getElementById('panel3').src = `punchlines/punchline${getRandomNum(totalPunchlines)}.png`;
+    }
+
+    // Load a comic immediately on page open
+    generateComic();
+  </script>
+</body>
+</html>
